@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marvel BOYS SUiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      background-image: url("https://wallpapercave.com/wp/wp7174350.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .container {
+        color: rgb(32, 32, 32);
+        display: flex;
+        margin: 20px;
+    }
+    .section {
+      flex: 1;
+      margin: 10px;
+      padding: 10px;
+      background-color:rgba(32, 32, 32, 0.767);
+
+    }
+    .section h2 {
+        background-color: rgba(224, 19, 19, 0.863);
+      font-size: 20px;
+      font-weight: bold;
+      color: ghostwhite;
+      font-weight: 300;
+      text-align: center;
+    }
+    .character {
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 300;
+      color: white;
+      display: inline-block;
+      margin: 10px;
+    }
+    .character img {
+      width: 100px;
+      height: 100px;
+    }
+    .hero-name, .villain-name {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .row {
+      text-align: center;
+    }
+    .row::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .row .character {
+      width: calc(33.33% - 20px);
+      float: left;
+    }
+  </style>
+</head>
+<body>
+    <h1>THE MARVEL UNIVERSE</h1>
+  <div class="container">
+    <div class="section">
+      <h2 >POPULAR SUPER HEROS</h2>
+      <div id="heroesTable" class="row">
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>POPULAR SUPER VILLIANS</h2>
+      <div id="villainsTable" class="row">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const charactersData = [
+      { name: "IRON MAN", image: "https://www.vincenthie.com/images/gallery/large/Iron-Man-Portrait.jpg", alignment: "Hero" },
+      { name: "WIDOW", image: "https://assets-prd.ignimgs.com/2021/03/23/black-widow-button-1616528351974.jpg", alignment: "Hero" },
+      { name: "THOR", image: "https://i.pinimg.com/originals/a8/49/b4/a849b47945c9d3174dbc56340c5f30a1.jpg", alignment: "Hero" },
+      { name: "WANDA", image: "https://wallpapers.com/images/featured/wanda-maximoff-scpnswr3l89jci61.jpg", alignment: "Hero" },
+      { name: "SPIDER MAN", image: "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3BpZGVybWFufGVufDB8fDB8fHww&w=1000&q=80", alignment: "Hero" },
+      { name: "THANOS", image: "https://cdna.artstation.com/p/assets/images/images/031/706/378/large/george-siskas-thanos1.jpg?1604365331", alignment: "Villain" },
+      { name: "LOKI", image: "https://queenstudios.shop/cdn/shop/products/lokibustmarvel_620x.jpg?v=1658306867", alignment: "Villain" },
+      { name: "ULTRON", image: "https://i.pinimg.com/1200x/2f/88/23/2f882317e6f6ee811efd24d497db0c9d.jpg", alignment: "Villain" },
+      { name: "Dr OCTOPUS", image: "https://i.pinimg.com/1200x/12/db/e8/12dbe80aac91ea59aae45801346fb742.jpg", alignment: "Villain" }
+    ];
+
+    function createCharacterCard(character, containerId) {
+      const container = document.getElementById(containerId);
+
+      const characterDiv = document.createElement("div");
+      characterDiv.classList.add("character");
+
+      const characterImage = document.createElement("img");
+      characterImage.src = character.image;
+      characterImage.classList.add(character.alignment.toLowerCase() + '-img');
+
+      const characterName = document.createElement("div");
+      characterName.classList.add(character.alignment.toLowerCase() + '-name');
+      characterName.textContent = character.name;
+
+      characterDiv.appendChild(characterImage);
+      characterDiv.appendChild(characterName);
+
+      container.appendChild(characterDiv);
+    }
+    const heroesTable = document.getElementById("heroesTable");
+    const villainsTable = document.getElementById("villainsTable");
+
+    charactersData.forEach(character => {
+      const containerId = character.alignment === "Hero" ? "heroesTable" : "villainsTable";
+      createCharacterCard(character, containerId);
+    });
+  </script>
+</body>
+</html>
